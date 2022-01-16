@@ -9,6 +9,35 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
 
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/radioButtonGlide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_glide_download"
+            style="@style/RadioButtonStyle"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonCurrentRepo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_udacity_download"
+            style="@style/RadioButtonStyle"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonRetrofitRepo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_retrofit_download"
+            style="@style/RadioButtonStyle"/>
+
+    </RadioGroup>
+
     <com.udacity.LoadingButton
         android:id="@+id/custom_button"
         android:layout_width="0dp"
