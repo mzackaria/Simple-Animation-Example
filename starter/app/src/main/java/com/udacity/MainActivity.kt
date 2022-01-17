@@ -1,20 +1,22 @@
 package com.udacity
 
 import android.app.DownloadManager
+import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.database.ContentObserver
+import android.graphics.Color
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.content_main.view.*
@@ -43,13 +45,30 @@ class MainActivity : AppCompatActivity(){
                     .show()
             } else {
                 download()
+                custom_button.isEnabled = false
             }
         }
+
+        createChannel(
+            CHANNEL_ID,
+            getString(R.string.channel_name_download_complete)
+        )
     }
 
     private val receiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
+        override fun onReceive(context: Context, intent: Intent?) {
+            custom_button.isEnabled = true
             val id = intent?.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1)
+
+            val notificationManager: NotificationManager =
+                ContextCompat.getSystemService(context, NotificationManager::class.java) as NotificationManager
+            notificationManager.sendNotification(
+                context.getString(R.string.download_complete),
+                context,
+                getRepo(),
+                true
+            )
+
         }
     }
 
@@ -82,6 +101,35 @@ class MainActivity : AppCompatActivity(){
         }
     }
 
+    private fun getRepo(): String {
+        return when(radioGroup.checkedRadioButtonId) {
+            radioButtonGlide.id -> getString(R.string.label_glide_download)
+            radioButtonCurrentRepo.id -> getString(R.string.label_udacity_download)
+            radioButtonRetrofitRepo.id -> getString(R.string.label_retrofit_download)
+            else -> ""
+        }
+    }
+
+
+    private fun createChannel(channelId: String, channelName: String) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
+
+            channel.enableLights(true)
+            channel.setShowBadge(false)
+            channel.lightColor = Color.RED
+            channel.enableVibration(true)
+            channel.description = getString(R.string.download_complete)
+            val notificationManager: NotificationManager =
+                ContextCompat.getSystemService(
+                    application,
+                    NotificationManager::class.java
+                ) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+
+    }
+
 
     companion object {
 
@@ -94,7 +142,7 @@ class MainActivity : AppCompatActivity(){
         private const val URL_RETROFIT_REPO =
             "https://github.com/square/retrofit/master.zip"
 
-        private const val CHANNEL_ID = "channelId"
+        const val CHANNEL_ID = "channelId"
     }
 
 }

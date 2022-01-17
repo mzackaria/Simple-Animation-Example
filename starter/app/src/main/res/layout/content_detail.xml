@@ -5,7 +5,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".DetailActivity"
-    tools:showIn="@layout/activity_detail">
+    android:layout_margin="16dp"
+    tools:context=".DetailActivity">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/file_name_label_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/file_name"
+        style="@style/LabelHeadline6"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/mFileNameTV"
+        style="@style/Headline6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/label_retrofit_download"
+        app:layout_constraintStart_toEndOf="@id/file_name_label_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/status_label_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/mFileNameTV"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/status"
+        style="@style/LabelHeadline6"/>
+
+    <com.udacity.SuccessTextView
+        android:id="@+id/mStatusTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/mFileNameTV"
+        app:layout_constraintStart_toEndOf="@id/file_name_label_tv"
+        style="@style/Headline6"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/nittm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/ok"
+        android:onClick="buttonClick"
+        style="@style/NormalButton"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

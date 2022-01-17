@@ -17,4 +17,13 @@
     <string name="download">Download</string>
     <string name="we_are_loading">We are loading</string>
     <string name="alert_no_file_selected">Please select a file to download.</string>
+    <string name="download_complete">Download complete</string>
+    <string name="channel_id_download_complete">channel_id_download_complete</string>
+    <string name="channel_name_download_complete">Download complete</string>
+    <string name="file_name">"File Name: "</string>
+    <string name="status">Status: </string>
+    <string name="failure">Failure</string>
+    <string name="success">Success</string>
+    <string name="ok">OK</string>
+    <string name="notif_button_label">Check for status</string>
 </resources>

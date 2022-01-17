@@ -23,4 +23,15 @@
         <item name="android:strokeColor">@color/colorAccent</item>
     </style>
 
+    <style name="Headline6" parent="TextAppearance.MaterialComponents.Headline6"/>
+    <style name="LabelHeadline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@android:color/darker_gray</item>
+    </style>
+
+    <style name="NormalButton" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 </resources>

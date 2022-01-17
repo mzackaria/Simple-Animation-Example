@@ -86,9 +86,9 @@ class LoadingButton @JvmOverloads constructor(
         //draw the button rect
         paint.color =  colorBackground
         canvas.drawRect(mainRect, paint)
-
-        //draw loading rectangle
+        
         if (buttonState == ButtonState.Loading) {
+            //draw loading rectangle
             paint.color =  colorLoading
             canvas.drawRect(loadingRect, paint)
 
@@ -100,7 +100,7 @@ class LoadingButton @JvmOverloads constructor(
             val top = textBound.top.toFloat() + heightSize/2
             val right = left + 2 * radiusLoadingArc
             val bottom = top + 2 * radiusLoadingArc
-//            canvas.drawRect(left, top, right, bottom, paint)
+
             canvas.drawArc(left, top, right, bottom,
             0f, 360*valueAnimator.animatedFraction,
             true, paint)
