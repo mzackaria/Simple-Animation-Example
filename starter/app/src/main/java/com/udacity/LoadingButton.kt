@@ -86,7 +86,7 @@ class LoadingButton @JvmOverloads constructor(
         //draw the button rect
         paint.color =  colorBackground
         canvas.drawRect(mainRect, paint)
-        
+
         if (buttonState == ButtonState.Loading) {
             //draw loading rectangle
             paint.color =  colorLoading
@@ -126,11 +126,11 @@ class LoadingButton @JvmOverloads constructor(
     }
 
     override fun performClick(): Boolean {
-        if (buttonState == ButtonState.Completed) {
+        return if (buttonState == ButtonState.Completed) {
             valueAnimator.start()
             buttonState = ButtonState.Loading
-        }
-        return super.performClick()
+            super.performClick()
+        } else false
     }
 
 }
