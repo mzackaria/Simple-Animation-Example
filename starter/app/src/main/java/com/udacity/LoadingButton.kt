@@ -92,15 +92,17 @@ class LoadingButton @JvmOverloads constructor(
             paint.color =  colorLoading
             canvas.drawRect(loadingRect, paint)
 
-            //drawing the loading circle
             paint.color =  colorArc
+            //getting width of text to put the arc after it
             paint.getTextBounds(label, 0, label.length, textBound)
 
+            //setting the arc box coordinates
             val left = textBound.right.toFloat()/2 + widthSize/2 + marginLeftLoadingArc
             val top = textBound.top.toFloat() + heightSize/2
             val right = left + 2 * radiusLoadingArc
             val bottom = top + 2 * radiusLoadingArc
 
+            //drawing the loading circle
             canvas.drawArc(left, top, right, bottom,
             0f, 360*valueAnimator.animatedFraction,
             true, paint)
@@ -108,7 +110,7 @@ class LoadingButton @JvmOverloads constructor(
         }
 
         //draw text
-        paint.color =  Color.WHITE
+        paint.color = Color.WHITE
         canvas.drawText(label, widthSize/2f, heightSize/2f + textSize/2f, paint)
     }
 

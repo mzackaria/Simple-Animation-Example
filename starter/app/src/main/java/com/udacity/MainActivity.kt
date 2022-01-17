@@ -45,35 +45,28 @@ class MainActivity : AppCompatActivity(){
                     .show()
             } else {
                 download()
-                custom_button.isEnabled = false
             }
         }
 
-        createChannel(
-            CHANNEL_ID,
-            getString(R.string.channel_name_download_complete)
-        )
+        createChannel()
     }
 
     private val receiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent?) {
-            custom_button.isEnabled = true
             val id = intent?.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1)
 
             val notificationManager: NotificationManager =
                 ContextCompat.getSystemService(context, NotificationManager::class.java) as NotificationManager
+
             notificationManager.sendNotification(
-                context.getString(R.string.download_complete),
                 context,
                 getRepo(),
                 true
             )
-
         }
     }
 
     private fun download() {
-
         val url = getUrl()
         if (url.isNotEmpty()) {
             val request =
@@ -111,10 +104,13 @@ class MainActivity : AppCompatActivity(){
     }
 
 
-    private fun createChannel(channelId: String, channelName: String) {
+    private fun createChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
-
+            val channel = NotificationChannel(
+                CHANNEL_ID,
+                getString(R.string.channel_name_download_complete),
+                NotificationManager.IMPORTANCE_HIGH
+            )
             channel.enableLights(true)
             channel.setShowBadge(false)
             channel.lightColor = Color.RED
@@ -129,7 +125,6 @@ class MainActivity : AppCompatActivity(){
         }
 
     }
-
 
     companion object {
 

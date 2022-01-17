@@ -14,7 +14,6 @@ const val EXTRA_CODE_FILE_NAME = "EXTRA_CODE_FILE_NAME"
 const val EXTRA_CODE_STATUS = "EXTRA_CODE_STATUS"
 
 fun NotificationManager.sendNotification(
-    messageBody: String,
     applicationContext: Context,
     fileName: String,
     isSuccess: Boolean
@@ -34,7 +33,8 @@ fun NotificationManager.sendNotification(
     val notification = NotificationCompat.Builder(applicationContext, MainActivity.CHANNEL_ID)
         .setContentTitle(applicationContext.getString(R.string.notification_title))
         .setSmallIcon(R.drawable.ic_launcher_background)
-        .setContentText(messageBody)
+        .setContentText(applicationContext.getString(R.string.download_complete))
+        .setContentIntent(pendingIntent)
         .setAutoCancel(true)
         .setPriority(NotificationCompat.PRIORITY_MAX)
         .addAction(
