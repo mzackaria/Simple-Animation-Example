@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:autoTransition="animateToEnd"
+        app:constraintSetStart="@+id/start"
+        app:constraintSetEnd="@+id/end"
+        app:duration="2000">
+    </Transition>
+
+    <KeyFrameSet>
+
+        <KeyAttribute
+            app:framePosition="20"
+            app:motionTarget="@id/file_name_label_tv"
+            android:translationX="0dp"
+            />
+        <KeyAttribute
+            app:framePosition="40"
+            app:motionTarget="@id/mFileNameTV"
+            android:translationX="0dp"
+            />
+        <KeyAttribute
+            app:framePosition="60"
+            app:motionTarget="@id/status_label_tv"
+            android:translationX="0dp"
+            />
+        <KeyAttribute
+            app:framePosition="80"
+            app:motionTarget="@id/mStatusTV"
+            android:translationX="0dp"
+            />
+    </KeyFrameSet>
+
+    <ConstraintSet android:id="@+id/start">
+
+        <Constraint
+            android:id="@id/file_name_label_tv"
+            android:translationX="-200dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <Constraint
+            android:id="@id/mFileNameTV"
+            android:translationX="600dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/file_name_label_tv"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <Constraint
+            android:id="@id/status_label_tv"
+            android:translationX="-200dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/mFileNameTV"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <Constraint
+            android:id="@id/mStatusTV"
+            android:translationX="600dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/mFileNameTV"
+            app:layout_constraintStart_toEndOf="@id/file_name_label_tv"
+            />
+
+        <Constraint
+            android:id="@id/github_image_icon"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:alpha="0"
+            />
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+
+        <Constraint
+            android:id="@id/file_name_label_tv"
+            android:translationX="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <Constraint
+            android:id="@id/mFileNameTV"
+            android:translationX="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/file_name_label_tv"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <Constraint
+            android:id="@id/status_label_tv"
+            android:translationX="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/mFileNameTV"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <Constraint
+            android:id="@id/mStatusTV"
+            android:translationX="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/mFileNameTV"
+            app:layout_constraintStart_toEndOf="@id/file_name_label_tv"
+            />
+
+        <Constraint
+            android:id="@id/github_image_icon"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:alpha="1"
+            />
+
+    </ConstraintSet>
+
+</MotionScene>
